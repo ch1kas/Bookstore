@@ -1,9 +1,10 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, Column, OneToMany } from 'typeorm';
 import { IsString, IsDate } from 'class-validator';
 import { BaseEntity } from '../../base.entity';
 import { ApiProperty } from '@nestjs/swagger';
+import { OrderEntity } from '../../orders/models/orders.entity';
 
-@Entity()
+@Entity("books")
 export class BookEntity extends BaseEntity {
   @ApiProperty({ example: '1984', description: 'Title of the books' })
   @Column()
@@ -19,4 +20,9 @@ export class BookEntity extends BaseEntity {
   @Column()
   @IsDate()
   publicationDate: Date;
+
+  @OneToMany(() => OrderEntity, (order) => order.book, {
+    onDelete: 'CASCADE',
+  })
+  orders: OrderEntity[];
 }

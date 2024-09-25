@@ -9,6 +9,8 @@ import { APP_GUARD } from '@nestjs/core';
 import { AuthGuard } from './modules/auth/guards/jwt-auth.guard';
 import { BooksModule } from './modules/books/books.module';
 import { JwtService } from '@nestjs/jwt';
+import { OrdersModule } from './modules/orders/orders.module';
+import { KafkaModule } from './modules/kafka/kafka.module';
 
 
 @Module({
@@ -26,7 +28,9 @@ import { JwtService } from '@nestjs/jwt';
     }),
     UsersModule,
     AuthModule,
-    BooksModule
+    BooksModule,
+    OrdersModule,
+    KafkaModule
   ],
   controllers: [AppController],
   providers: [

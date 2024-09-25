@@ -17,7 +17,8 @@ describe('BooksService', () => {
     author: 'Mock Author',
     publicationDate: new Date('2022-01-01'),
     created_at: new Date(),
-    updated_at: new Date()
+    updated_at: new Date(),
+    orders: []
   };
 
   const mockBooksRepository = {
